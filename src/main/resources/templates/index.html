@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>jQuery UI Dialog - Modal form</title>
+  <link rel="stylesheet" th:href="@{/css/jquery-ui.css}"/>
+  <link rel="stylesheet" 
+		th:href="@{/css/bootstrap.min.css}"/>
+  <style>
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    textarea{margin-bottom:12px; width:95%; padding: .4em;}
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 5px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+    img{ width:100%;min-width:200px;height:100%}
+	.pl-7{padding-left:5rem!important}
+	.pr-7{padding-right:5rem!important}
+	
+  </style>
+  <script th:src="@{/js/jquery-1.12.4.js}"></script>
+  <script th:src="@{/js/jquery-ui.js}"></script>
+<!-- -<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --> 
+  <script th:src="@{/js/dialog.js}"></script>
+</head>
+<body  >
+	<div id="main" class ="container col-sm-12 col-md-10  col-lg-10 col-xl-8">
+	
+	<div id="contentDialog" title="Content">
+	  <p id="contentText">This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+	</div>
+		<div id="dialog-form"  title="Create new Article">
+		  <p class="validateTips">All form fields are required.</p>
+		 
+		  <form >
+		    <fieldset>
+		    <label id="labelId" for="id">Id</label>
+		      <input  type="text" name="id" id="id" value="" class="text ui-widget-content ui-corner-all" readonly="readonly"/>
+		      <label for="title">Title</label>
+		      <input type="text" name="title" id="title" value="" class="text ui-widget-content ui-corner-all"/>
+		      <label for="text">Content</label>
+		      <textarea  name="content" id="content" rows="10" class="text ui-widget-content ui-corner-all" ></textarea>
+		      <label for="image">Image</label>
+		      <input type="file" accept="image/*" name="image" id="image"  class="text ui-widget-content ui-corner-all"/>
+		 
+		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px"/>
+		    </fieldset>
+		  </form>
+		</div>
+		
+		<div class="container  mt-5">
+		 	<div class="row justify-content-center">
+<!-- 		
+			<button   id="create-user">Create new Article</button>
+			<button  id="writeToEnd">writeToEnd</button>
+			<button  id="writeToBegin">writeToBegin</button>
+			<button  id="deleteFromEnd">deletFromEnd</button>
+			<button  id="deleteFromBegin">deletFromBegin</button>
+			<button  id="getArticles">getArticles</button>
+-->
+				<button  type="button" class="btn btn-primary pt-3 pb-3 pr-7 pl-7" id="create-user">Create new Article</button>
+			</div>
+		</div>
+		<div class="container mt-4">
+			<div class="row justify-content-center">
+				<div class="col-auto">
+					<button  type="button" class="btn btn-primary pt-3 pb-3 pr-5 pl-5" id="prev">prev</button>
+					<h5 style="display:inline" class="m-2 " id="page">1</h5>
+					<button type="button" class="btn btn-primary pt-3 pb-3 pr-5 pl-5" id="next" >next</button>
+				</div>
+			</div>
+		</div>
+		<div id="tbody" class="mt-4 row"></div>
+		</div>
+	</body>
+</html>
